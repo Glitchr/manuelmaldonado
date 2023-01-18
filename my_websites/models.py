@@ -6,14 +6,14 @@ class Education(models.Model):
     title = models.CharField(max_length=100)
     university_name = models.CharField(max_length=100)
     university_url = models.URLField(max_length=200)
-    start_date = models.DateField()
-    end_date = models.DateField()
-    is_completed = models.CharField(max_length=50)
+    start_date = models.DateField(blank=True, null=True)
+    end_date = models.DateField(blank=True, null=True)
+    is_completed = models.CharField(max_length=50, blank=True, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name = 'Education'
+        verbose_name_plural = 'Education'
 
     def __str__(self):
         """Return a string representation of the model"""
@@ -23,11 +23,11 @@ class Education(models.Model):
 class Project(models.Model):
     """A model representing programming projects"""
     name = models.CharField(max_length=200)
-    description = models.TextField(max_length=1000)
+    description = models.TextField(max_length=1000, blank=True, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
-    is_published = models.CharField(max_length=50)
-    is_opensource = models.CharField(max_length=50)
+    is_published = models.BooleanField()
+    is_opensource = models.BooleanField()
 
     def __str__(self):
         """Return a string representation of the model"""
@@ -37,10 +37,10 @@ class Project(models.Model):
 class Job(models.Model):
     """A model representing job experience"""
     job_title = models.CharField(max_length=100)
-    description = models.TextField(max_length=1000)
+    description = models.TextField(max_length=1000, blank=True, null=True)
     company = models.CharField(max_length=100)
-    start_date = models.DateField()
-    end_date = models.DateField()
+    start_date = models.DateField(blank=True, null=True)
+    end_date = models.DateField(blank=True, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     is_employee = models.BooleanField()
@@ -53,13 +53,13 @@ class Job(models.Model):
 class Certification(models.Model):
     """A model representing certifications earned"""
     name = models.CharField(max_length=200)
-    description = models.TextField(max_length=200)
-    cert_url = models.URLField(max_length=200)
-    start_date = models.DateField()
-    end_date = models.DateField()
+    description = models.TextField(max_length=200, blank=True, null=True)
+    cert_url = models.URLField(max_length=200, blank=True, null=True)
+    start_date = models.DateField(blank=True, null=True)
+    end_date = models.DateField(blank=True, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
-    is_published = models.CharField(max_length=50)
+    is_published = models.BooleanField()
 
     def __str__(self):
         """Return a string representation of the model"""
@@ -71,8 +71,11 @@ class SocialMedia(models.Model):
     name = models.CharField(max_length=100)
     link = models.URLField(max_length=200)
     is_public = models.BooleanField()
-    date_added = models.DateField()
-    date_updated = models.DateField()
+    date_added = models.DateField(auto_now_add=True)
+    date_updated = models.DateField(auto_now=True)
+
+    class Meta:
+        verbose_name_plural = "Social Media"
 
     def __str__(self):
         """Return a string representation of the model"""
@@ -85,6 +88,15 @@ class Skill(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     is_public = models.BooleanField()
+
+    def __str__(self):
+        """Return a string representation of the model"""
+        return self.name
+
+
+class Language(models.Model):
+    """A model representing natural languages"""
+    name = models.CharField(max_length=50)
 
     def __str__(self):
         """Return a string representation of the model"""
