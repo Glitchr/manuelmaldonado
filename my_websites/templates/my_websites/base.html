@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="My personal website. Built with Django.">
-    <title>Manuel Maldonado</title>
+    <title>Manuel Maldonado's homepage</title>
     <style type="text/css"></style>
     {% block header %}
     {% endblock header %}
@@ -18,7 +18,7 @@
 
     <nav>
       <ul>
-        <li><a href="#"><strong>Home</strong></a></li>
+        <li><a href="{% url 'index' %}"><strong>Home</strong></a></li>
       </ul>
       <ul>
         <li><a href="#">About</a></li>

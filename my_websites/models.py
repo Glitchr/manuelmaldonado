@@ -24,10 +24,11 @@ class Project(models.Model):
     """A model representing programming projects"""
     name = models.CharField(max_length=200)
     description = models.TextField(max_length=1000, blank=True, null=True)
+    repository_link = models.URLField(max_length=200, blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
-    is_published = models.BooleanField()
-    is_opensource = models.BooleanField()
+    is_published = models.BooleanField(default=False)
+    is_opensource = models.BooleanField(default=False)
 
     def __str__(self):
         """Return a string representation of the model"""

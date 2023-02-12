@@ -1,0 +1,11 @@
+{% extends "my_websites/base.html" %}
+
+{% block content %}
+  <h3>{{ project }}</h3>
+
+  <section>
+      <p>{{ project.description }}</p>
+      <p><a href="{{ project.link }}">Repository</a></p>
+  </section>
+
+{% endblock content %}
