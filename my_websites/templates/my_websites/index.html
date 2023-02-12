@@ -1,0 +1,28 @@
+{% extends "my_websites/base.html" %}
+{% load static %}
+
+{% block content %}
+  <section>
+
+    <span>
+      <!--<img src="https://avatars.githubusercontent.com/u/19945996?v=4" alt="Github Avatar" class="responsive">-->
+    </span>
+    <div>
+      <h4>I am</h4>
+      <h1>Manuel Maldonado</h1>
+      <p>System engineering student with an interest for backend development.</p> 
+    </div>
+
+  </section>
+
+  <section>  
+
+    <ul>
+      {% for socialmedia in social_media %}
+        <li><a href="{{ socialmedia.link }}">{{ socialmedia }}</a></li>
+      {% endfor %}
+    </ul>
+
+  </section>
+    
+{% endblock content %}

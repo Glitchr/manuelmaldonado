@@ -1,0 +1,42 @@
+{% load bootstrap5 %}
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="My personal website. Built with Django.">
+    <title>Manuel Maldonado</title>
+    <style type="text/css"></style>
+    {% block header %}
+    {% endblock header %}
+  </head>
+
+  <body>
+
+    <nav>
+      <ul>
+        <li><a href="#"><strong>Home</strong></a></li>
+      </ul>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Resume</a></li>
+        <li><a href="{% url 'projects' %}">Projects</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>            
+    </nav>        
+
+    <main>  
+      {% block content %}
+      {% endblock content %}     
+    </main>
+
+    <footer>
+      <p>Copyrights 2023 - Manuel Maldonado</p>
+    </footer>
+
+  </body>
+
+</html>
