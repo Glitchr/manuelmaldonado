@@ -1,0 +1,87 @@
+{% extends "my_websites/base.html" %}
+
+{% block content %}
+  <header>
+      <h1>My Resume</h1>
+  </header>
+
+  <section>
+      <div>
+          <h1>Manuel Maldonado</h1>
+          <h2><a href="{{ socialmedia.link }}">{{ socialmedia }}</a></h2>
+          <h2>Venezuela</h2>
+      </div>
+
+      <br>
+
+      <div>
+          <h2>EDUCATION</h2>
+          <hr />
+          {% for degree in educations %}
+            <p>{{ degree.university_name }}</p>
+            <p>{{ degree.title }}</p>
+
+            {% if degree.is_completed %}
+              <p>{{ degree.end_date|date:"Y" }}</p>
+            {% elif degree.is_completed == False and degree.is_dropped == False %}
+              <p>Degree expected: {{ degree.end_date|date:"M, Y" }}</p>
+            {% elif degree.is_dropped %}
+              <p>{{ degree.start_date|date:"Y" }}-{{ degree.end_date|date:"Y" }}</p>
+            {% endif %}
+
+            <p>{{ degree.location }}</p>
+          {% endfor %}
+      </div>
+
+      <br>
+
+      <div>
+        <h2>EXPERIENCE</h2>
+        <hr />
+        {% for job in jobs %}
+          <p>{{ job.company }}</p>
+          <p>{{ job.job_title }}</p>
+          <span>
+            <p>{{ job.description }}</p><p>{{ job.location }}</p>
+          </span>
+        {% endfor %}    
+      </div>
+
+      <br>
+
+      <div>
+        <h2>SKILLS AND INTERESTS</h2>
+        <hr />
+        <ul>
+            <li>
+                <p>
+                    <strong>Highly skilled and proficient in:</strong> {{ expert_skills|join:", " }}.
+                </p>
+            </li>
+            <li>
+                <p>
+                    <strong>Proficient in:</strong> {{ proficient_skills|join:", " }}.
+                </p>
+            </li>
+            <li>
+                <p>
+                    <strong>Frameworks/libraries/tools:</strong> {{ flt_skills|join:", " }}.
+                </p>
+            </li>
+            <li>
+                <p>
+                    <strong>Interests:</strong> {{ interests|join:"; " }}.
+                </p>
+            </li>
+        </ul>
+      </div>
+
+      <br>
+
+      <div>
+        <h2>PROJECTS</h2>
+        <hr />
+        <p>Check projects page :)</p>
+      </div>   
+  </section>
+{% endblock content %}

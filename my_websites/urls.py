@@ -13,5 +13,7 @@ urlpatterns = [
     # Detail page for each project
     path('projects/<int:project_id>', views.project, name='project'),
     # The about page
-    path('about/', views.about, name='about')
+    path('about/', views.about, name='about'),
+    # The resume page
+    path('resume/', views.resume, name='resume'),
 ]

@@ -5,10 +5,12 @@ class Education(models.Model):
     """Model representing university degrees"""
     title = models.CharField(max_length=100)
     university_name = models.CharField(max_length=100)
-    university_url = models.URLField(max_length=200)
+    university_url = models.URLField(max_length=200, blank=True)
+    location = models.CharField(max_length=100)
     start_date = models.DateField(blank=True, null=True)
     end_date = models.DateField(blank=True, null=True)
-    is_completed = models.CharField(max_length=50, blank=True, null=True)
+    is_completed = models.BooleanField()
+    is_dropped = models.BooleanField()
     date_added = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
@@ -27,8 +29,8 @@ class Project(models.Model):
     repository_link = models.URLField(max_length=200, blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
-    is_published = models.BooleanField(default=False)
-    is_opensource = models.BooleanField(default=False)
+    is_published = models.BooleanField()
+    is_opensource = models.BooleanField()
 
     def __str__(self):
         """Return a string representation of the model"""
@@ -40,6 +42,7 @@ class Job(models.Model):
     job_title = models.CharField(max_length=100)
     description = models.TextField(max_length=1000, blank=True, null=True)
     company = models.CharField(max_length=100)
+    location = models.CharField(max_length=100)
     start_date = models.DateField(blank=True, null=True)
     end_date = models.DateField(blank=True, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
@@ -83,12 +86,53 @@ class SocialMedia(models.Model):
         return self.name
 
 
+class Category(models.Model):
+    """A model representing categories for the work skills"""
+    name = models.CharField(max_length=50)
+
+    class Meta:
+
+        verbose_name_plural = "Categories"
+
+    def __str__(self):
+        """Return a string representing a model"""
+        return self.name
+
+
+class Proficiency(models.Model):
+    """A model representing skills proficiency"""
+    level = models.CharField(max_length=20)
+
+    class Meta:
+
+        verbose_name_plural = "Proficiency"
+
+    def __str__(self):
+        """Return a string representing a model"""
+        return self.level
+
+
 class Skill(models.Model):
     """A model representing programming skills"""
     name = models.CharField(max_length=100)
+    category = models.ForeignKey(
+        Category, on_delete=models.CASCADE, blank=True, null=True)
+    proficiency = models.ForeignKey(
+        Proficiency, on_delete=models.CASCADE, blank=True, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     is_public = models.BooleanField()
+
+    def __str__(self):
+        """Return a string representation of the model"""
+        return self.name
+
+
+class Interest(models.Model):
+    """A model representing hobbies and interests"""
+    name = models.CharField(max_length=100)
+    date_added = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         """Return a string representation of the model"""
