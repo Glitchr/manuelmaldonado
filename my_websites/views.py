@@ -6,7 +6,12 @@ from .models import Education, Job, Certification, Project, Interest, SocialMedi
 def index(request):
     """The home page for the website"""
     social_media = SocialMedia.objects.all()
-    context = {'social_media': social_media}
+
+    # Log how many times the website has been visited
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits + 1
+
+    context = {'social_media': social_media, 'num_visits': num_visits}
 
     return render(request, 'my_websites/index.html', context)
 
@@ -25,22 +30,6 @@ def project(request, project_id):
     context = {'project': project}
 
     return render(request, 'my_websites/project.html', context)
-
-
-def about(request):
-    """The page about me"""
-    educations = Education.objects.all().order_by('start_date')
-    jobs = Job.objects.all().order_by('start_date')
-    certifications = Certification.objects.all().order_by('start_date')
-    skills = Skill.objects.all()
-    context = {
-        'education': educations,
-        'job': jobs,
-        'certification': certifications,
-        'skill': skills,
-    }
-
-    return render(request, 'my_websites/about.html', context)
 
 
 def resume(request):
