@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # My apps
     'my_websites.apps.MyWebsitesConfig',
+    'github.apps.GithubConfig',
 
     # Default Django apps
     'django.contrib.admin',

@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 
-from .models import Education, Job, Certification, Project, Interest, SocialMedia, Skill
+from .models import Education, Job, Certification, Interest, SocialMedia, Skill
 
 
 def index(request):
@@ -14,22 +14,6 @@ def index(request):
     context = {'social_media': social_media, 'num_visits': num_visits}
 
     return render(request, 'my_websites/index.html', context)
-
-
-def projects(request):
-    """The page for my projects"""
-    projects = Project.objects.all().order_by('-date_added')
-    context = {'projects': projects}
-
-    return render(request, 'my_websites/projects.html', context)
-
-
-def project(request, project_id):
-    """Display detailed information for each project"""
-    project = get_object_or_404(Project, id=project_id)
-    context = {'project': project}
-
-    return render(request, 'my_websites/project.html', context)
 
 
 def resume(request):
