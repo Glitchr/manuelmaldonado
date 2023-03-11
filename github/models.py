@@ -9,7 +9,7 @@ class Repository(models.Model):
     created_at = models.DateTimeField()
     updated_at = models.DateTimeField()
     is_public = models.BooleanField()
-    is_opensource = models.BooleanField(default=False)
+    is_listed = models.BooleanField(default=True)
 
     class Meta:
 

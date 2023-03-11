@@ -9,12 +9,19 @@
   <section>
       <ul>
           {% for repo in repos %}
-            <li>
+            {% if repo.is_listed %}
+              <li>
                 <h3>{{ repo }}</h3>
                 <p>{{ repo.description }}</p>
                 <p><a href="{{ repo.link }}">Repository</a></p>
                 <p>Last updated: {{ repo.updated_at|date:'M d, Y' }}</p>
-            </li>
+                {% if repo.is_public %}
+                  <p>Public</p>
+                {% else %}
+                  <p>Private</p>
+                {% endif %}
+              </li>
+            {% endif %}
           {% empty %}
             <p>Work in progress.</p>
           {% endfor %}

@@ -1,14 +1,13 @@
 from django.shortcuts import render
 
 from .models import Repository
-from .utils import get_github_credentials, sync_repos_data
+from .utils import sync_repos_data
 
 
 def repos(request):
     """The page for my repositories"""
     try:
-        username = get_github_credentials()[0]
-        sync_repos_data(username)
+        sync_repos_data()
         repos = Repository.objects.all().order_by('-updated_at')
         context = {'repos': repos}
 
