@@ -10,4 +10,8 @@ urlpatterns = [
     path('', views.index, name='index'),
     # The resume page
     path('resume/', views.resume, name='resume'),
+    # Contact Me page
+    path('contact/', views.contactme, name='contact'),
+    # Email sent successfully page
+    path('contact/success/', views.success, name='success'),
 ]

@@ -23,7 +23,7 @@
       <ul>
         <li><a href="{% url 'resume' %}">Resume</a></li>
         <li><a href="{% url 'projects' %}">Projects</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="{% url 'contact' %}">Contact</a></li>
       </ul>            
     </nav>        
 
@@ -33,7 +33,7 @@
     </main>
 
     <footer>    
-      <p>Copyrights 2023 - Manuel Maldonado</p>
+      <p>Copyright © {% now 'Y' %} - Manuel Maldonado</p>
     </footer>
 
   </body>
