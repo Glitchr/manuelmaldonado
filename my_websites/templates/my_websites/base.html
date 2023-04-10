@@ -9,21 +9,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="My personal website. Built with Django.">
     <title>Manuel Maldonado's homepage</title>
-    <style type="text/css"></style>
+
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
     {% block header %}
     {% endblock header %}
   </head>
 
   <body>
 
-    <nav>
-      <ul>
-        <li><a href="{% url 'index' %}"><strong>Home</strong></a></li>
+    <nav class="navbar navbar-expand-md navbar-light mb-4 justify-content-between">
+      <ul class="navbar-nav">
+        <li class="navbar-item nav-link"><a class="navbar-brand" href="{% url 'index' %}"><strong>Home</strong></a></li>
       </ul>
-      <ul>
-        <li><a href="{% url 'resume' %}">Resume</a></li>
-        <li><a href="{% url 'projects' %}">Projects</a></li>
-        <li><a href="{% url 'contact' %}">Contact</a></li>
+      <ul class="navbar-nav">
+        <li class="nav-item nav-link"><a href="{% url 'resume' %}">Resume</a></li>
+        <li class="nav-item nav-link"><a href="{% url 'projects' %}">Projects</a></li>
+        <li class="nav-item nav-link"><a href="{% url 'contact' %}">Contact</a></li>
       </ul>            
     </nav>        
 

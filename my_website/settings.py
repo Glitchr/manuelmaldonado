@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Third Party Apps
-    'bootstrap5'
+    'bootstrap5',
+    'hcaptcha_field',
 ]
 
 MIDDLEWARE = [
@@ -138,3 +139,7 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = config('HOST_EMAIL')
 EMAIL_HOST_PASSWORD = config('HOST_PASSWORD')
+
+# hCaptcha
+HCAPTCHA_SITEKEY = config('HCAPTCHA_SITEKEY')
+HCAPTCHA_SECRET = config('HCAPTCHA_SECRET')

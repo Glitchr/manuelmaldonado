@@ -40,7 +40,8 @@ def sync_repos_data():
                 'link': repo['html_url'],
                 'is_public': not repo['private'],
                 'created_at': repo['created_at'],
-                'updated_at': repo['updated_at']})
+                'updated_at': repo['updated_at'],
+                'pushed_at': repo['pushed_at']})
 
         # If the repository already exists, update its fields with the latest
         # data from the Github API
@@ -50,4 +51,5 @@ def sync_repos_data():
             repository.is_public = not repo['private']
             repository.created_at = repo['created_at']
             repository.updated_at = repo['updated_at']
+            repository.pushed_at = repo['pushed_at']
             repository.save()

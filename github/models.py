@@ -1,5 +1,5 @@
 from django.db import models
-
+from datetime import datetime
 
 class Repository(models.Model):
     """A model representing programming projects"""
@@ -8,6 +8,7 @@ class Repository(models.Model):
     link = models.URLField(max_length=200, blank=True)
     created_at = models.DateTimeField()
     updated_at = models.DateTimeField()
+    pushed_at = models.DateTimeField(null=True)
     is_public = models.BooleanField()
     is_listed = models.BooleanField(default=True)
 

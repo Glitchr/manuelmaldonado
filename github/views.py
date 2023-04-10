@@ -8,7 +8,7 @@ def repos(request):
     """The page for my repositories"""
     try:
         sync_repos_data()
-        repos = Repository.objects.all().order_by('-updated_at')
+        repos = Repository.objects.all().order_by('-pushed_at')
         context = {'repos': repos}
 
         return render(request, 'github/projects.html', context)
