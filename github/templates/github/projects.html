@@ -1,12 +1,13 @@
 {% extends "my_websites/base.html" %}
 
+{% block header %}
+  <h1>My projects</h1>
+{% endblock header %}
 
 {% block content %}
-  <header>
-    <h1>My projects</h1>
-  </header>
 
   <section>
+
     <ul>
       {# Loop through the repos list and display each repo that is listed #}
       {% for repo in repos %}
@@ -32,6 +33,7 @@
         <p>Work in progress.</p>
       {% endfor %}
     </ul>
+
   </section>
    
 {% endblock content %}

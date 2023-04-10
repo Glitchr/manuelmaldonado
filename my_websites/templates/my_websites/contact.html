@@ -1,9 +1,10 @@
 {% extends 'my_websites/base.html' %}
 
+{% block header %}
+  <h1>Contact me</h1>
+{% endblock header %}
+
 {% block content %}
-  <header>
-    <h1>Contact me</h1>
-  </header>
 
   <form action="" method="post">
     {% csrf_token %}
