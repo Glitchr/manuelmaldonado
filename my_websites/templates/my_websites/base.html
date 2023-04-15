@@ -3,9 +3,7 @@
 
 <!doctype html>
 <html lang="en">
-
   <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="My personal website. Built with Django.">
@@ -13,18 +11,13 @@
 
     {% bootstrap_css %}
     {% bootstrap_javascript %}
-
-    <style>
-      .navbar-nav { flex-direction: row; }
-      .navbar-expand-md .navbar-nav .nav-link { padding-right: 10px; padding-left: 10px; }
-    </style>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
   </head>
 
-  <body>
+  <body class="d-flex flex-column min-vh-100">
 
     <nav class="navbar navbar-expand-md navbar-light mb-4">
-
         <ul class="navbar-nav">
           <li class="navbar-item active"><a class="nav-link" href="{% url 'index' %}"><strong>Home</strong></a></li>
         </ul>
@@ -34,21 +27,23 @@
           <li class="nav-item"><a class="nav-link" href="{% url 'projects' %}">Projects</a></li>
           <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
         </ul>
-
     </nav>        
 
-    <main>
-      {% block header %}
-      {% endblock header %}
+    <main class="container">
+      <div>
+        {% block header %}
+        {% endblock header %}
+      </div>
 
-      {% block content %}
-      {% endblock content %}     
+      <div>
+        {% block content %}
+        {% endblock content %}     
+      </div>
     </main>
 
-    <footer  class="navbar navbar-inverse navbar-fixed-bottom d-flex justify-content-center align-items-center">
+    <footer class="mt-auto text-center">
       <p>Copyright © {% now 'Y' %} - Manuel Maldonado</p>
     </footer>
 
   </body>
-
 </html>

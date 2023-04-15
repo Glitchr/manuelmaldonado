@@ -3,3 +3,4 @@ ll_env/
 __pycache__/
 *.sqlite3
 notes.md
+my_websites/static/

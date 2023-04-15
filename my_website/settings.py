@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     # Third Party Apps
     'bootstrap5',
     'hcaptcha_field',
+    'django_bootstrap_icons',
 ]
 
 MIDDLEWARE = [

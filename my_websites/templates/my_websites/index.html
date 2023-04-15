@@ -1,32 +1,27 @@
 {% extends "my_websites/base.html" %}
-{% load static %}
+{% load static bootstrap_icons %}
 
 {% block content %}
-  <section>
+  <div class='content-wrapper'>
+    <section class="profile">
+      <img src="{% static 'images/avatar.jpg' %}" alt="Github Avatar" class="profile-image">
 
-    <span>
-      <!--<img src="https://avatars.githubusercontent.com/u/19945996?v=4" alt="Github Avatar" class="responsive">-->
-    </span>
-    <div>
-      <h4>I am</h4>
-      <h1>Manuel Maldonado</h1>
-      <p>System engineering student with an interest for backend development.</p> 
-    </div>
-
-  </section>
-
-  <section>  
-
-    <ul>
-      {% for socialmedia in social_media %}
-        <li><a href="{{ socialmedia.link }}">{{ socialmedia }}</a></li>
-      {% endfor %}
-    </ul>
-
-    <footer>
-      <p>Visited {{ num_visits }} time{{ num_visits|pluralize }}.</p>
-    </footer>
-
-  </section>
+      <article class="profile-info">
+        <h4>I am</h4>
+        <h1>Manuel Maldonado</h1>
+        <p class="lead">System engineering student with an interest for backend development.</p> 
+        <section class="profile-links">  
+          <ul class="list-inline">
+            {% for socialmedia in social_media %}
+              <li class="list-inline-item"><a class="btn btn-outline-primary" href="{{ socialmedia.link }}">{% bs_icon socialmedia|lower %}{{ socialmedia }}</a></li>
+            {% endfor %}
+          </ul>
     
+          <footer>
+            <p>Visited {{ num_visits }} time{{ num_visits|pluralize }}.</p>
+          </footer>
+        </section>
+      </article>
+    </section>
+  </div>
 {% endblock content %}

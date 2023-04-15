@@ -7,21 +7,25 @@
 {% block content %}
 
   <section>
-    
+    <div class="container-sm border">
       <div>
-          <h1>Manuel Maldonado</h1>
-          <h2><a href="{{ socialmedia.link }}">{{ socialmedia }}</a></h2>
-          <h2>Venezuela</h2>
+          <h2>Manuel Maldonado</h2>
+          <h3><a href="{{ socialmedia.link }}">{{ socialmedia }}</a></h3>
+          <h3>Venezuela</h3>
       </div>
 
       <br>
 
       <div>
-          <h2>EDUCATION</h2>
+          <h4>EDUCATION</h4>
           <hr />
           {% for degree in educations %}
-            <p>{{ degree.university_name }}</p>
-            <p>{{ degree.title }}</p>
+            <p>
+              <strong>{{ degree.university_name }}</strong>
+            </p>
+            <p>
+              <i>{{ degree.title }}</i>
+            </p>
 
             {% if degree.is_completed %}
               <p>{{ degree.end_date|date:"Y" }}</p>
@@ -38,21 +42,30 @@
       <br>
 
       <div>
-        <h2>EXPERIENCE</h2>
+        <h4>EXPERIENCE</h4>
         <hr />
+        {% firstof '' as prev_company %}
         {% for job in jobs %}
-          <p>{{ job.company }}</p>
-          <p>{{ job.job_title }}</p>
-          <span>
-            <p>{{ job.description }}</p><p>{{ job.location }}</p>
-          </span>
-        {% endfor %}    
+          {% if job.company != prev_company %}
+            <h5>
+              <strong>{{ job.company }}</strong>
+            </h5>
+            {% firstof job.company as prev_company %}
+          {% endif %}
+          <p>
+            <i>{{ job.job_title }}</i>
+          </p>
+          <div>
+            <p>{{ job.description }}</p>
+            <p>{{ job.location }}</p>
+          </div>
+        {% endfor %}  
       </div>
 
       <br>
 
       <div>
-        <h2>SKILLS AND INTERESTS</h2>
+        <h4>SKILLS AND INTERESTS</h4>
         <hr />
         <ul>
             <li>
@@ -81,11 +94,11 @@
       <br>
 
       <div>
-        <h2>PROJECTS</h2>
+        <h4>PROJECTS</h4>
         <hr />
         <p>Check projects page :)</p>
       </div>  
-
+    <div>
   </section>
 
 {% endblock content %}
