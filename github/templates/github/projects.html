@@ -1,31 +1,31 @@
 {% extends "my_websites/base.html" %}
+{% load bootstrap_icons %}
 
 {% block header %}
-  <h1 class="mb-4 border-bottom">My Projects</h1>
+  <h1 class="mb-4 text-center">My Projects</h1>
 {% endblock header %}
 
 {% block content %}
 
   <section>
 
-    <ul>
+    <ul class="list-inline project-sort">
       {# Loop through the repos list and display each repo that is listed #}
       {% for repo in repos %}
         {% if repo.is_listed %}
-          <li>
+          <li class="list-inline-item project-box shadow-test">
             <h3>{{ repo }}</h3>
 
             {% if repo.description %}
               <p>{{ repo.description }}</p>
             {% endif%}
 
-            <p><a href="{{ repo.link }}">Repository</a></p>
-            <p>Last activity: {{ repo.pushed_at|date:'M d, Y' }}</p>
-            
+            <p><a class="btn btn-outline-light btn-sm" href="{{ repo.link }}">{% bs_icon 'github' %}Repository</a></p>
+            <span class="badge bg-info text-dark">Last activity: {{ repo.pushed_at|date:'M d, Y' }}</span>        
             {% if repo.is_public %}
-              <p>Public</p>
+              <span class="badge bg-success">Public</span>
             {% else %}
-              <p>Private</p>
+              <span class="badge bg-danger">Private</span>
             {% endif %}
           </li>
         {% endif %}

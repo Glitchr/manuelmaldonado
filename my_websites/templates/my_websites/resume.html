@@ -1,11 +1,11 @@
 {% extends "my_websites/base.html" %}
 
 {% block header %}
-  <h1 class="mb-4 border-bottom">My Resume</h1>
+  <h1 class="mb-4 text-center">My Resume</h1>
 {% endblock header%}
 
 {% block content %}
-  <section class="container-sm resume-border mb-4">
+  <section class="container-sm resume-border mb-4 rounded">
     <div class="page">
       <div>
           <h2>Manuel Maldonado</h2>
@@ -35,8 +35,7 @@
               <i>{{ degree.title }}</i>
               <i class="date-align">{{ degree.location }}</i>
             </p>
-            <br>
-            
+            <br>           
           {% endfor %}
       </div>
 
