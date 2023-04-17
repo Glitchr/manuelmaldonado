@@ -1,13 +1,12 @@
 {% extends "my_websites/base.html" %}
 
 {% block header %}
-  <h1>My Resume</h1>
+  <h1 class="mb-4 border-bottom">My Resume</h1>
 {% endblock header%}
 
 {% block content %}
-
-  <section>
-    <div class="container-sm border">
+  <section class="container-sm resume-border mb-4">
+    <div class="page">
       <div>
           <h2>Manuel Maldonado</h2>
           <h3><a href="{{ socialmedia.link }}">{{ socialmedia }}</a></h3>
@@ -22,28 +21,29 @@
           {% for degree in educations %}
             <p>
               <strong>{{ degree.university_name }}</strong>
+
+              {% if degree.is_completed %}
+                <strong class="date-align">{{ degree.end_date|date:"Y" }}</strong>
+              {% elif degree.is_completed == False and degree.is_dropped == False %}
+                <strong class="date-align">Degree expected: {{ degree.end_date|date:"F, Y" }}</strong>
+              {% elif degree.is_dropped %}
+                <strong class="date-align">{{ degree.start_date|date:"Y" }}-{{ degree.end_date|date:"Y" }}</strong>
+              {% endif %}
             </p>
+            
             <p>
               <i>{{ degree.title }}</i>
+              <i class="date-align">{{ degree.location }}</i>
             </p>
-
-            {% if degree.is_completed %}
-              <p>{{ degree.end_date|date:"Y" }}</p>
-            {% elif degree.is_completed == False and degree.is_dropped == False %}
-              <p>Degree expected: {{ degree.end_date|date:"M, Y" }}</p>
-            {% elif degree.is_dropped %}
-              <p>{{ degree.start_date|date:"Y" }}-{{ degree.end_date|date:"Y" }}</p>
-            {% endif %}
-
-            <p>{{ degree.location }}</p>
+            <br>
+            
           {% endfor %}
       </div>
-
-      <br>
 
       <div>
         <h4>EXPERIENCE</h4>
         <hr />
+
         {% firstof '' as prev_company %}
         {% for job in jobs %}
           {% if job.company != prev_company %}
@@ -52,17 +52,23 @@
             </h5>
             {% firstof job.company as prev_company %}
           {% endif %}
+
           <p>
             <i>{{ job.job_title }}</i>
+            {% if job.is_employee %}
+              <strong class="date-align">{{ job.start_date|date:"M. Y"}} - Present</strong>
+            {% else %}
+              <strong class="date-align">{{ job.start_date|date:"M. Y"}} - {{ job.end_date|date:"M. Y" }}</strong>
+            {% endif %}
           </p>
+
           <div>
             <p>{{ job.description }}</p>
-            <p>{{ job.location }}</p>
+            <p><i>{{ job.location }}</i></p>
+            <br>
           </div>
         {% endfor %}  
       </div>
-
-      <br>
 
       <div>
         <h4>SKILLS AND INTERESTS</h4>
@@ -100,5 +106,4 @@
       </div>  
     <div>
   </section>
-
 {% endblock content %}
