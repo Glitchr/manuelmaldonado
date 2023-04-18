@@ -1,6 +1,3 @@
-{% load bootstrap5 %}
-{% load static %}
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -9,6 +6,7 @@
     <meta name="description" content="My personal website. Built with Django.">
     <title>Manuel Maldonado's homepage</title>
 
+    {% load i18n bootstrap5 static %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
@@ -29,7 +27,7 @@
         </ul>
     </nav>        
 
-    <main class="container-md">
+    <main class="container">
       <div>
         {% block header %}
         {% endblock header %}

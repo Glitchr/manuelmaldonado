@@ -13,7 +13,7 @@
       {# Loop through the repos list and display each repo that is listed #}
       {% for repo in repos %}
         {% if repo.is_listed %}
-          <li class="list-inline-item project-box shadow-test">
+          <li class="list-inline-item project-box">
             <h3>{{ repo }}</h3>
 
             {% if repo.description %}
