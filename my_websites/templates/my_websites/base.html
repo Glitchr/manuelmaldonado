@@ -10,7 +10,22 @@
     {% bootstrap_css %}
     {% bootstrap_javascript %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4P0HDQ45FF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-4P0HDQ45FF');
+    </script>
+    
+    <!-- Cookie Policy banner -->
+    <script src="https://cdn.websitepolicies.io/lib/cconsent/cconsent.min.js" defer></script><script>window.addEventListener("load",function(){window.wpcb.init({"colors":{"popup":{"background":"#131516","text":"#D1CDC7","border":"#5e65c2"},"button":{"background":"#5e65c2","text":"#ffffff"}},"transparency":"10","padding":"small","corners":"large","content":{"href":"https://www.manuelmaldonado.me/cookie-policy/"},"fontsize":"small"})});</script>
   </head>
 
   <body class="d-flex flex-column min-vh-100">

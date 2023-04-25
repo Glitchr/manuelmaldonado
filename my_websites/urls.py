@@ -14,4 +14,6 @@ urlpatterns = [
     path('contact/', views.contactme, name='contact'),
     # Email sent successfully page
     path('contact/success/', views.success, name='success'),
+    # Cookie policy page
+    path('cookie-policy/', views.cookie_policy, name='cookie-policy'),
 ]

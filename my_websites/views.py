@@ -76,4 +76,8 @@ def contactme(request):
 def success(request):
     """Returns a success message after sending an email""" 
     return TemplateResponse(request, 'my_websites/success.html',)
-            
+
+
+def cookie_policy(request):
+    """The page for the cookie policy"""
+    return render(request, 'my_websites/cookie-policy.html')

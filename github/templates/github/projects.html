@@ -19,14 +19,15 @@
             {% if repo.description %}
               <p>{{ repo.description }}</p>
             {% endif%}
-
-            <p><a class="btn btn-outline-light btn-sm" href="{{ repo.link }}">{% bs_icon 'github' %}Repository</a></p>
-            <span class="badge bg-info text-dark">Last activity: {{ repo.pushed_at|date:'M d, Y' }}</span>        
-            {% if repo.is_public %}
-              <span class="badge bg-success">Public</span>
-            {% else %}
-              <span class="badge bg-danger">Private</span>
-            {% endif %}
+            <div class="pills">
+              <a class="btn btn-outline-light btn-sm btn-rounded" href="{{ repo.link }}">{% bs_icon 'github' %}Repository</a>
+              <span class="badge bg-info text-dark rounded-pill ">Last activity: {{ repo.pushed_at|date:'M d, Y' }}</span>        
+              {% if repo.is_public %}
+                <span class="badge bg-success rounded-pill ">Public</span>
+              {% else %}
+                <span class="badge bg-danger rounded-pill ">Private</span>
+              {% endif %}
+            </div>
           </li>
         {% endif %}
       {% empty %}
