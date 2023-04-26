@@ -2,10 +2,12 @@ from django.shortcuts import render, redirect
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
 from django.template.response import TemplateResponse
+from django.conf import settings
 from decouple import config
 
 from .models import Education, Job, Certification, Interest, SocialMedia, Skill
 from .forms import ContactForm
+from .utils import get_sessions
 
 
 def index(request):
@@ -13,8 +15,8 @@ def index(request):
     social_media = SocialMedia.objects.all()
 
     # Log how many times the website has been visited
-    num_visits = request.session.get('num_visits', 0)
-    request.session['num_visits'] = num_visits + 1
+    property_id = settings.PROPERTY_ID
+    num_visits = get_sessions(property_id)
 
     context = {'social_media': social_media, 'num_visits': num_visits}
 

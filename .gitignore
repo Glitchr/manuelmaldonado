@@ -4,3 +4,5 @@ __pycache__/
 *.sqlite3
 notes.md
 my_websites/static/
+GA4_credentials.json
+staticfiles/
